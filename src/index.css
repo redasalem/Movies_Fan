@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.footer-icons img{
+    @apply w-8 h-8 cursor-pointer hover:opacity-80 hover:scale-150 transition-transform duration-500;
+}
+
+.login-form input:not([type="checkbox"]){
+    @apply w-full h-13 bg-[#333] text-white my-[12px] mx-0 border-0 outline-0 rounded-sm py-[16px] px-[20px] text-base font-medium;
+}
