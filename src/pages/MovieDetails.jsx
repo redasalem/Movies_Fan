@@ -10,25 +10,25 @@ const MovieDetails = () => {
     const [details, setDetails] = useState([]);
     const navigate= useNavigate();
 
-    
-
-    useEffect(() => {
-        const options = {
+    const options = {
         method: 'GET',
         headers: {
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmFiZDY4NjRjMzVkOTNmY2UyYTk3N2YyNDBiOTE2ZiIsIm5iZiI6MTc0MzM3NzUxMC4xOTIsInN1YiI6IjY3ZTlkNDY2NGY3NDFjNzViYmM2YjYzZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.G2XSbmhUmGD_F-Pt1hYPwyNGA-RlnwGj1SNNyCPmZc0'
         }
     };
+
+    useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
             .then(res => res.json())
             .then(data => {
                 setDetails(data);
+                console.log(data);
             })
             .catch(err => {
                 console.error(err);
             });
-    }, [details,id]);
+    }, [id]);
 
     return (
         <div className="min-h-screen flex flex-col bg-black text-white">
@@ -45,49 +45,45 @@ const MovieDetails = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                 
                 {/* Movie Info */}
-                <div className="absolute bottom-0 left-0 w-full px-[6%] pb-16">
-                    <h1 className="text-5xl font-bold mb-4">{details?.title}</h1>
-                    <div className="flex items-center gap-4 mb-6">
+                <div className="sm:absolute relative sm:bottom-0 sm:left-0 w-full px-[6%] sm:pb-16 pb-8 bg-black sm:bg-transparent mt-20 sm:mt-56">
+                    <h1 className="text-4xl sm:text-5xl font-bold mb-4">{details?.title}</h1>
+                    <div className="flex flex-wrap items-center gap-4 mb-6">
                         {details?.vote_average && (
                             <span className="text-green-500">
                                 {Math.round(details.vote_average * 10)}% Match
                             </span>
                         )}
-                        {details?.release_date && (
-                            <span>{new Date(details.release_date).getFullYear()}</span>
-                        )}
-                        {details?.runtime && (
-                            <span>{Math.floor(details.runtime / 60)}h {details.runtime % 60}m</span>
-                        )}
+                        <span>{new Date(details?.release_date).getFullYear()}</span>
+                        <span>{Math.floor(details?.runtime / 60)}h {details?.runtime % 60}m</span>
                         <span className="border border-gray-600 px-2 py-0.5 text-sm">HD</span>
                     </div>
                     
                     {/* Buttons */}
-                    <div className="flex items-center gap-4 mb-8">
+                    <div className="flex flex-wrap items-center gap-4 mb-8">
                         <Link to={`/player/${id}`}>
-                        <button className="bg-white text-black px-8 py-3 rounded flex items-center gap-2 hover:bg-white/90 transition cursor-pointer">
-                            <img src={play_icon} alt="Play" className="w-6 h-6" />
+                        <button className="bg-white text-black px-6 sm:px-8 py-2 sm:py-3 rounded flex items-center gap-2 hover:bg-white/90 transition cursor-pointer">
+                            <img src={play_icon} alt="Play" className="w-5 sm:w-6 h-5 sm:h-6" />
                             <span className="font-semibold">Play</span>
                         </button>
                         </Link>
-                        <button className="bg-gray-600/80 px-8 py-3 rounded flex items-center gap-2 hover:bg-gray-600
+                        <button className="bg-gray-600/80 px-6 sm:px-8 py-2 sm:py-3 rounded flex items-center gap-2 hover:bg-gray-600
                          transition cursor-pointer" onClick={()=>navigate('/')}>
                             <span className="font-bold">Go to Home Page</span>
                         </button>
                     </div>
                     
-                    <p className="text-lg max-w-[60%] leading-relaxed text-gray-200">
+                    <p className="text-lg max-w-full sm:max-w-[60%] leading-relaxed text-gray-200 mb-8">
                         {details?.overview}
                     </p>
                 </div>
             </div>
 
             {/* Details Section */}
-            <div className="px-[6%] py-12">
-                <div className="grid grid-cols-3 gap-12">
+            <div className="px-[6%] py-8 sm:py-12 mt-72 sm:mt-11">
+                <div className="sm:grid sm:grid-cols-3 sm:gap-12">
                     {/* Column 1 - Cast & Crew */}
-                    <div>
-                        <h3 className="text-xl font-semibold mb-4">Genres</h3>
+                    <div className="mb-12 sm:mb-0">
+                        <h3 className="text-2xl font-semibold mb-6">Genres</h3>
                         <div className="flex flex-wrap gap-2">
                             {details?.genres?.map(genre => (
                                 <span 
@@ -101,9 +97,9 @@ const MovieDetails = () => {
                     </div>
 
                     {/* Column 2 - Production */}
-                    <div>
-                        <h3 className="text-xl font-semibold mb-4">Production</h3>
-                        <div className="space-y-2 text-gray-300">
+                    <div className="mb-12 sm:mb-0">
+                        <h3 className="text-2xl font-semibold mb-6">Production</h3>
+                        <div className="space-y-3 text-gray-300">
                             {details?.production_companies?.map(company => (
                                 <p key={company.id}>{company.name}</p>
                             ))}
@@ -112,23 +108,13 @@ const MovieDetails = () => {
 
                     {/* Column 3 - Additional Info */}
                     <div>
-                        <h3 className="text-xl font-semibold mb-4">Details</h3>
-                        <div className="space-y-2 text-gray-300">
-                            {details?.release_date && (
-                                <p><span className="text-gray-400">Release Date:</span> {new Date(details.release_date).toLocaleDateString()}</p>
-                            )}
-                            {details?.runtime && (
-                                <p><span className="text-gray-400">Runtime:</span> {details.runtime} minutes</p>
-                            )}
-                            {details?.vote_average && (
-                                <p><span className="text-gray-400">Rating:</span> {details.vote_average.toFixed(1)}/10</p>
-                            )}
-                            {details?.budget && (
-                                <p><span className="text-gray-400">Budget:</span> ${details.budget.toLocaleString()}</p>
-                            )}
-                            {details?.revenue && (
-                                <p><span className="text-gray-400">Revenue:</span> ${details.revenue.toLocaleString()}</p>
-                            )}
+                        <h3 className="text-2xl font-semibold mb-6">Details</h3>
+                        <div className="space-y-3 text-gray-300">
+                            <p><span className="text-gray-400">Release Date:</span> {new Date(details?.release_date).toLocaleDateString()}</p>
+                            <p><span className="text-gray-400">Runtime:</span> {details?.runtime} minutes</p>
+                            <p><span className="text-gray-400">Rating:</span> {details?.vote_average?.toFixed(1)}/10</p>
+                            <p><span className="text-gray-400">Budget:</span> ${details?.budget?.toLocaleString()}</p>
+                            <p><span className="text-gray-400">Revenue:</span> ${details?.revenue?.toLocaleString()}</p>
                         </div>
                     </div>
                 </div>
