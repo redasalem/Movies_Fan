@@ -1,20 +1,18 @@
 🎬 Movie Fan
 
-A modern movie discovery web application built with React, styled using TailwindCSS, and powered by Firebase Authentication for secure login and logout.
-The app integrates with the TMDb API
- to provide real-time movie data, including trending films, search functionality, and user favorites.
+A Full-Stack Movie Discovery Application built with React, TailwindCSS, Firebase, and TMDb API.
+This app delivers a smooth user experience with real-time movie data, secure authentication, and modern UI design.
 
 🚀 Features
 
-🔐 Authentication with Firebase (Google or Email/Password).
+🔐 Authentication with Firebase (Google & Email/Password).
 
-🎥 Real-time Movies powered by TMDb API
+🎥 Real-Time Movies powered by TMDb API
 .
 
 ⭐ Favorites Management linked to user accounts.
 
-🔎 Advanced Search for films & TV shows via Search Endpoint
-.
+🔎 Advanced Search for films & TV shows via TMDb Search Endpoint.
 
 📱 Responsive Design optimized for all devices.
 
@@ -22,65 +20,78 @@ The app integrates with the TMDb API
 
 🛠️ Tech Stack
 
-React.js → Component-based UI framework
+React.js → Component-based UI framework.
 
-TailwindCSS → Utility-first styling
+TailwindCSS → Utility-first CSS framework.
 
-Firebase Authentication → Secure user management
+Firebase Authentication → Secure login & user sessions.
 
 TMDb API
- → Movie & TV data provider
+ → Movie & TV data provider.
 
-React Router → Client-side routing
+React Router → Client-side routing.
 
-Context API → Global state management
+Context API → Global state management.
 
 ⚙️ Setup & Configuration
 
-Clone the repository to your local environment.
+Clone the repository:
 
-Install project dependencies using npm or yarn.
+git clone https://github.com/your-username/movie-fan.git
+cd movie-fan
+
+
+Install dependencies:
+
+npm install
+
 
 Get your TMDb API key from here
 .
 
-Configure environment variables for Firebase & TMDb API in a .env file.
+Configure Firebase + TMDb API inside .env:
 
-Run the development server to start exploring the app locally.
+VITE_FIREBASE_API_KEY=your_firebase_key  
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_domain  
+VITE_FIREBASE_PROJECT_ID=your_firebase_project  
+VITE_TMDB_API_KEY=your_tmdb_key  
+
+
+Run the development server:
+
+npm run dev
 
 📂 Project Overview
 
-Authentication Layer: Firebase handles login/logout & user sessions.
+Authentication Layer → Firebase handles login/logout & user sessions.
 
-Movie Data Layer: TMDb API
- provides trending, popular, and detailed movie data.
+Movie Data Layer → TMDb API provides trending, popular, and detailed movie info.
 
-UI Layer: TailwindCSS ensures fast styling and responsive design.
+UI Layer → TailwindCSS for responsive modern styling.
 
-Routing Layer: React Router enables navigation across pages (Home, Login, Movie Details, Favorites).
+Routing Layer → React Router for navigation (Home, Login, Movie Details, Favorites).
 
-State Layer: Context API manages global state (auth + favorites).
+State Layer → Context API for global state (auth + favorites).
 
 🎨 Design Highlights
 
 Clean, minimal, and modern UI.
 
-Responsive layouts optimized for mobile and desktop.
+Responsive layouts for both mobile and desktop.
 
-Intuitive navigation with focus on user experience.
+Intuitive navigation with smooth user experience.
 
-Dark mode-ready design principles.
+Dark Mode Ready with theme toggling.
 
 🔮 Future Roadmap
 
 📝 Add user reviews and custom ratings.
 
-📺 Expand to include TV shows and series using TV Endpoints
-.
+📺 Expand to include full TV show support.
 
-🌐 Introduce multi-language support.
+🌐 Add multi-language support.
 
-📊 Improve SEO & performance optimizations.
+📊 Performance + SEO optimizations.
 
 💾 Offline mode for saved favorites.
 
@@ -98,4 +109,4 @@ TailwindCSS
 React
  → UI framework.
 
-📌 Disclaimer: This project is built for learning purposes. All movie data is sourced from TMDb.
+📌 Disclaimer: All movie & TV data is sourced from TMDb.

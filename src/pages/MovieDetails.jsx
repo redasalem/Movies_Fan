@@ -10,25 +10,25 @@ const MovieDetails = () => {
     const [details, setDetails] = useState([]);
     const navigate= useNavigate();
 
-    const options = {
+    
+
+    useEffect(() => {
+        const options = {
         method: 'GET',
         headers: {
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmFiZDY4NjRjMzVkOTNmY2UyYTk3N2YyNDBiOTE2ZiIsIm5iZiI6MTc0MzM3NzUxMC4xOTIsInN1YiI6IjY3ZTlkNDY2NGY3NDFjNzViYmM2YjYzZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.G2XSbmhUmGD_F-Pt1hYPwyNGA-RlnwGj1SNNyCPmZc0'
         }
     };
-
-    useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
             .then(res => res.json())
             .then(data => {
                 setDetails(data);
-                console.log(data);
             })
             .catch(err => {
                 console.error(err);
             });
-    }, [id]);
+    }, [details,id]);
 
     return (
         <div className="min-h-screen flex flex-col bg-black text-white">
@@ -53,8 +53,12 @@ const MovieDetails = () => {
                                 {Math.round(details.vote_average * 10)}% Match
                             </span>
                         )}
-                        <span>{new Date(details?.release_date).getFullYear()}</span>
-                        <span>{Math.floor(details?.runtime / 60)}h {details?.runtime % 60}m</span>
+                        {details?.release_date && (
+                            <span>{new Date(details.release_date).getFullYear()}</span>
+                        )}
+                        {details?.runtime && (
+                            <span>{Math.floor(details.runtime / 60)}h {details.runtime % 60}m</span>
+                        )}
                         <span className="border border-gray-600 px-2 py-0.5 text-sm">HD</span>
                     </div>
                     
@@ -110,11 +114,21 @@ const MovieDetails = () => {
                     <div>
                         <h3 className="text-xl font-semibold mb-4">Details</h3>
                         <div className="space-y-2 text-gray-300">
-                            <p><span className="text-gray-400">Release Date:</span> {new Date(details?.release_date).toLocaleDateString()}</p>
-                            <p><span className="text-gray-400">Runtime:</span> {details?.runtime} minutes</p>
-                            <p><span className="text-gray-400">Rating:</span> {details?.vote_average?.toFixed(1)}/10</p>
-                            <p><span className="text-gray-400">Budget:</span> ${details?.budget?.toLocaleString()}</p>
-                            <p><span className="text-gray-400">Revenue:</span> ${details?.revenue?.toLocaleString()}</p>
+                            {details?.release_date && (
+                                <p><span className="text-gray-400">Release Date:</span> {new Date(details.release_date).toLocaleDateString()}</p>
+                            )}
+                            {details?.runtime && (
+                                <p><span className="text-gray-400">Runtime:</span> {details.runtime} minutes</p>
+                            )}
+                            {details?.vote_average && (
+                                <p><span className="text-gray-400">Rating:</span> {details.vote_average.toFixed(1)}/10</p>
+                            )}
+                            {details?.budget && (
+                                <p><span className="text-gray-400">Budget:</span> ${details.budget.toLocaleString()}</p>
+                            )}
+                            {details?.revenue && (
+                                <p><span className="text-gray-400">Revenue:</span> ${details.revenue.toLocaleString()}</p>
+                            )}
                         </div>
                     </div>
                 </div>
