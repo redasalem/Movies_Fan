@@ -5,8 +5,10 @@ import play_icon from '../assets/play_icon.png';
 import info_icon from '../assets/info_icon.png';
 import TitleCards from '../components/TitleCards';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate=useNavigate();
   return (
     <div className="min-h-screen flex flex-col bg-black">
       <Navbar/>
@@ -23,7 +25,9 @@ const Home = () => {
             your next unforgettable story awaits. Start streaming today and join millions of viewers worldwide.
           </p>
           <div className='flex gap-[10px] mb-[50px] mt-5'>
-            <button className='border-0 outline-0 py-2 px-6 inline-flex items-center gap-[10px] text-xl font-bold bg-white rounded-sm cursor-pointer text-black hover:bg-[#ffffffbf]'>
+            <button className='border-0 outline-0 py-2 px-6 inline-flex items-center gap-[10px] text-xl 
+            font-bold bg-white rounded-sm cursor-pointer
+             text-black hover:bg-[#ffffffbf]' onClick={()=>navigate('/player/755898')}>
               <img className='w-[25px]' src={play_icon} alt="play_icon" /> Play
             </button>
             <button className='border-0 outline-0 py-2 px-6 inline-flex items-center gap-[10px] text-xl font-bold bg-gray-400 rounded-sm cursor-pointer text-white hover:bg-[#6d6d6e66]'>

@@ -1,25 +1,51 @@
 import { useState } from 'react';
-import Logo from '../assets/logo.png';
+import logo from '/logo_fan.jpg';
 import { Link } from 'react-router-dom';
+import { login,signup } from '../firebase';
+import netflix_spinner from '../assets/netflix_spinner.gif';
 
 const Login = () => {
   const [signState,setsignState]=useState("Sign In");
+  const [name,setname]=useState('');
+  const [email,setemail]=useState('');
+  const [password,setpassword]=useState('');
+  const [loading,setloading]=useState(false);
+
+  const user_auth = async (e)=>{
+    e.preventDefault();
+    setloading(true);
+    if(signState === 'Sign In'){
+      await login(email,password);
+    }else{
+      await signup(name,email,password);
+    }
+    setloading(false);
+  }
+
+
   return (
+     loading?<div className='w-full h-screen flex items-center justify-center'>
+      <img src={netflix_spinner} alt="netflix_spinner" className='w-[60px]' />
+      </div>:
     <div className='h-screen py-[20px] px-[8%] '  
       style={{  backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('./background_banner.jpg')` }}>
-      <img className='w-[150px]' src={Logo} alt="logo_login" />
+      <div className='flex items-center gap-5'>
+                <img src={logo} alt="logo" className='w-[70px] rounded-full'/>
+                <h1 className='text-2xl text-red-500 font-bold'>Movie Fan</h1>
+             </div>
       {/* login-form */}
       <div className='login-form w-full max-w-[450px] bg-black/75 rounded-sm p-15 m-auto'>
         <h1 className='text-[32px] font-medium mb-7 text-center'>{signState}</h1>
 
         <form className='flex flex-col items-center justify-center'>
-          {signState === 'Sign Up' && <input type='text' placeholder='Your Name'/> }
+          {signState === 'Sign Up' && 
+          <input value={name} onChange={(e)=>{setname(e.target.value)}} type='text' placeholder='Your Name'/> }
          
-          <input type='email' placeholder='Your Email'/>
-          <input type='password' placeholder='Enter Password'/>
+          <input value={email} onChange={(e)=>{setemail(e.target.value)}} type='email' placeholder='Your Email'/>
+          <input value={password} onChange={(e)=>{setpassword(e.target.value)}} type='password' placeholder='Enter Password'/>
           <button className='px-6 py-2 bg-red-700 my-5 font-bold hover:border-2 hover:bg-green-500 rounded-sm text-[18px] cursor-pointer
            hover:border-emerald-500 hover:scale-110 transition-transform duration-500'
-           >{signState}</button>
+         onClick={user_auth} type='submit'  >{signState}</button>
           {/* form help */}
           <div>
             {/* remember */}
@@ -57,6 +83,7 @@ const Login = () => {
       </div>
         
    </div>   
+   
   )
 }
 

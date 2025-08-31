@@ -32,7 +32,7 @@ useEffect(()=>{
       <div className='gap-4 pr-7 pb-4 grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
         {apiData.map((card,index)=>{
           return (
-               <Link to={`/player/${card.id}`} key={index} className='relative group transition-transform duration-300 hover:scale-105'>
+               <Link to={`/movieDetails/${card.id}`} key={index} className='relative group transition-transform duration-300 hover:scale-105'>
               <img 
                 className='rounded-lg object-cover cursor-pointer' 
                 src={`https://image.tmdb.org/t/p/w500/${card.backdrop_path}`} 
