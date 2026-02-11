@@ -3,6 +3,48 @@
 A Full-Stack Movie Discovery Application built with React, TailwindCSS, Firebase, and TMDb API.
 This app delivers a smooth user experience with real-time movie data, secure authentication, and modern UI design.
 
+# 🎬 Movie Fan
+
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)](https://firebase.google.com/)
+
+A premium **Full-Stack Movie Discovery Application** that delivers a seamless cinematic experience. Powered by **TMDb API** and secured with **Firebase**, this app offers real-time data with a modern, responsive UI.
+
+---
+
+## 🚀 Key Features
+
+* **🔐 Secure Auth:** Full authentication system via Firebase (Google & Email/Password).
+* **🎥 Live Data:** Real-time movies & TV shows metadata from TMDb API.
+* **⭐ Personal Library:** Add your favorite films to your account for quick access.
+* **🔎 Smart Search:** Deep search functionality for titles, genres, and actors.
+* **📱 Responsive:** Fully optimized for Mobile, Tablet, and Desktop.
+* **🌓 Theme Support:** Modern Dark/Light mode implementation.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Purpose |
+| :--- | :--- |
+| **React.js + Vite** | High-performance Frontend Architecture |
+| **TailwindCSS** | Professional & Utility-first styling |
+| **Firebase** | Authentication & Real-time Database |
+| **TMDb API** | Industry-standard Movie & TV database |
+| **React Router** | Dynamic Client-side routing |
+| **Context API** | Scalable Global State Management |
+
+---
+
+## ⚙️ Quick Installation
+
+1️⃣ **Clone the repo:**
+```bash
+git clone [https://github.com/a-basuony/movie-fan.git](https://github.com/a-basuony/movie-fan.git)
+cd movie-fan
+
+
 🚀 Features
 
 🔐 Authentication with Firebase (Google & Email/Password).
