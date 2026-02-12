@@ -1,4 +1,4 @@
-🎬 Movie Fan
+🎬 Movie web
 
 A Full-Stack Movie Discovery Application built with React, TailwindCSS, Firebase, and TMDb API.
 This app delivers a smooth user experience with real-time movie data, secure authentication, and modern UI design.
@@ -152,3 +152,5 @@ React
  → UI framework.
 
 📌 Disclaimer: All movie & TV data is sourced from TMDb.
+
+made by Reda salem
